@@ -1,0 +1,21 @@
+apply plugin: 'eu.appsatori.fatjar'
+
+dependencies {
+    compile project(':brut.apktool:apktool-cli')
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+    }
+}
+
+gradle.taskGraph.whenReady {
+    fatJar {
+        manifest {
+            attributes("Main-Class": "brut.apktool.Main")
+        }
+    }
+}
